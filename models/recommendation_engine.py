@@ -45,11 +45,11 @@ class BeautyRecommendationEngine:
         for i, score in similarity_scores[1:num_recommendations+1]:
             product = self.products_df.iloc[i]
             recommendations.append({
-                'id': product['id'],
+                'id': int(product['id']),
                 'name': product['name'],
                 'brand': product['brand'],
-                'price': product['price'],
-                'similarity_score': score
+                'price': float(product['price']),
+                'similarity_score': float(score)
             })
         
         return recommendations
