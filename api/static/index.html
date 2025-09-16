@@ -535,7 +535,7 @@
         }
         const data = await resp.json();
         // Expecting data to be an array of recommendations
-        renderResults(data);
+        renderResults(data.recommendations);
         showLoading(false);
         statusDot.textContent = 'Results';
       } catch (err) {
@@ -557,10 +557,12 @@
       const brandsVal = $('#brands').value.split(',').map(b => b.trim()).filter(Boolean);
 
       const payload = {
-        skinType,
-        concerns,
-        budget: budgetVal,
-        preferredBrands: brandsVal
+      name: "Custom User",
+      age: 25,
+      skin_type: skinType,
+      concerns: concerns,
+      budget_max: budgetVal,
+      preferred_brands: brandsVal
       };
 
       await getRecommendations(payload);
@@ -578,7 +580,7 @@
             throw new Error('Server ' + resp.status);
           }
           const data = await resp.json();
-          renderResults(data);
+          renderResults(data.recommendations);
           loadingEl.style.display = 'none';
           statusDot.textContent = 'User: ' + userId;
         } catch (err) {
