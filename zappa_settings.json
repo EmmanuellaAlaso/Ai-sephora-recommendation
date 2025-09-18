@@ -1,0 +1,23 @@
+{
+    "production": {
+        "app_function": "api.lambda_app.app",
+        "aws_region": "us-east-1",
+        "project_name": "ai-sephora-recommendation",
+        "runtime": "python3.9",
+        "s3_bucket": "ai-sephora-recommendation-deploy-bucket",
+        "keep_warm": false,
+        "memory_size": 512,
+        "timeout_seconds": 30,
+        "environment_variables": {
+            "FLASK_ENV": "production"
+        },
+        "exclude": [
+            "*.git*",
+            "*.DS_Store*",
+            "__pycache__",
+            "*.pyc",
+            "venv/*",
+            ".env"
+        ]
+    }
+}
